@@ -62,12 +62,9 @@ export default {
     postcss: {
       preset: {
         features: {
-          customProperties: true
+          customProperties: false
         }
       }
     },
   },
-  generate: { 
-    dir: 'public' 
-  } 
 }
