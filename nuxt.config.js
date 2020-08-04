@@ -50,6 +50,7 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    'nuxt-buefy',
     // Doc: https://github.com/nuxt-community/modules/tree/master/packages/bulma
     '@nuxtjs/bulma',
   ],

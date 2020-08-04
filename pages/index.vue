@@ -1,73 +1,48 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        apicall-firebase
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+    <section>
+        <b-field>
+            <b-upload v-model="dropFiles"
+                multiple
+                drag-drop>
+                <section class="section">
+                    <div class="content has-text-centered">
+                        <p>
+                            <b-icon
+                                icon="upload"
+                                size="is-large">
+                            </b-icon>
+                        </p>
+                        <p>Drop your files here or click to upload</p>
+                    </div>
+                </section>
+            </b-upload>
+        </b-field>
+
+        <div class="tags">
+            <span v-for="(file, index) in dropFiles"
+                :key="index"
+                class="tag is-primary" >
+                {{file.name}}
+                <button class="delete is-small"
+                    type="button"
+                    @click="deleteDropFile(index)">
+                </button>
+            </span>
+        </div>
+    </section>
 </template>
 
 <script>
-export default {}
+    export default {
+        data() {
+            return {
+                dropFiles: []
+            }
+        },
+        methods: {
+            deleteDropFile(index) {
+                this.dropFiles.splice(index, 1)
+            }
+        }
+    }
 </script>
-
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
